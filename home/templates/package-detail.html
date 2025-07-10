@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load tour_custom_tags %}
+{% load static %}
+{% block content %}
+
+<main class="site-main" id="content">
+    <!-- Inner Banner html start-->
+    <section class="inner-banner-wrap">
+        <div class="inner-baner-container" style="background-image: url(assets/images/inner-banner.jpg);">
+            <div class="container">
+                <div class="inner-banner-content">
+                    <h1 class="inner-title">Tour Packages</h1>
+                </div>
+            </div>
+        </div>
+        <div class="inner-shape"></div>
+    </section>
+
+
+    <div class="single-tour-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="single-tour-inner">
+                        <h2>{{tour.title}}</h2>
+                        <figure class="feature-image">
+                            <img alt="" src="{{tour.thumbnail.url}}">
+                            <div class="package-meta text-center">
+                                <ul>
+                                    <li>
+                                        <i class="far fa-clock"></i>
+                                        {{tour.day}} Days / {{tour.night}} Night
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-user-friends"></i>
+                                        People: {{tour.people}}
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-map-marked-alt"></i>
+                                        {{tour.title}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </figure>
+                        <div class="tab-container">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a aria-controls="overview" aria-selected="true" class="nav-link active"
+                                       data-toggle="tab"
+                                       href="#overview" id="overview-tab" role="tab">TOUR DESCRIPTION</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a aria-controls="program" aria-selected="false" class="nav-link" data-toggle="tab"
+                                       href="#program"
+                                       id="program-tab" role="tab">PROGRAM</a>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div aria-labelledby="overview-tab" class="tab-pane fade show active" id="overview"
+                                     role="tabpanel">
+                                    <div class="overview-content">
+                                        {% for tag in tour.tag_set.all %}
+                                        <p>
+                                            {{tag.description}}
+                                        </p>
+                                        {% endfor %}
+                                        <div>
+                                            {% for prog in tour.program_set.all %}
+                                            <li> {{prog.description}}</li>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="program" role="tabpanel">
+                                    <div class="itinerary-content">
+                                        <h3>Program <span>( {{tour.day}} days )</span></h3>
+                                        {% for subject in tour.subject_set.all %}
+                                        <p>{{subject.main_description}}</p>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="itinerary-timeline-wrap">
+                                        <ul>
+                                            <li>
+                                                <div class="timeline-content">
+                                                    <div class="row">
+                                                        {% for subject in tour.subject_set.all %}
+                                                        <div class="timeline-content">
+                                                            <div class="day-count">Day
+                                                                <span>{{subject.day_count}}</span></div>
+                                                            <h4>{{subject.subj_title}}</h4>
+                                                            <p>{{subject.subj_description}}</p>
+                                                        </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-tour-gallery">
+                            <h3>GALLERY / PHOTOS</h3>
+                            <div class="single-tour-slider">
+                                {% for gallary in tour.gallary_set.all %}
+                                <div class="single-tour-item">
+                                    <figure class="feature-image">
+                                        <img alt="" src="{{gallary.description.url}}">
+                                    </figure>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="sidebar">
+                        <div class="package-price">
+                            <h5 class="price">
+                                <span>{% cal_sellprice tour.price tour.discount as value %}{{value|rupee}}</span> / per
+                                person
+                            </h5>
+                        </div>
+
+                        <div class="widget-bg information-content text-center">
+                            <h5>TRAVEL TIPS</h5>
+                            <h3>NEED TRAVEL RELATED TIPS & INFORMATION</h3>
+                            <p>Mollit voluptatem perspiciatis convallis elementum corporis quo veritatis aliquid
+                                blandit, blandit torquent, odit placeat. </p>
+                            <a class="button-primary" href="{% url 'contact' %}">GET A QUOTE</a>
+                            <a class="button-primary" href="{% url 'booking' tour.pk %}">Booking</a>
+                        </div>
+
+                        <div class="travel-package-content text-center"
+                             style="background-image: url(assets/images/img11.jpg);">
+                            <h5>MORE PACKAGES</h5>
+                            <h3>OTHER TRAVEL PACKAGES</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus.</p>
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="far fa-arrow-alt-circle-right"></i>Comming Soon</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+{% endblock %}

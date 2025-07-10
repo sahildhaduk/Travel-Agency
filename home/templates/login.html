@@ -1,0 +1,66 @@
+{% load static %}
+{% include 'header.html' %}
+<main class="site-main" id="content">
+    <!-- Inner Banner html start-->
+    <section class="inner-banner-wrap">
+        <div class="inner-baner-container">
+            <div class="container">
+                <div class="inner-banner-content">
+                    <h1 class="inner-title">LOGIN</h1>
+                </div>
+            </div>
+        </div>
+        <div class="inner-shape"></div>
+    </section>
+    <!-- Inner Banner html end-->
+    <!-- contact form html start -->
+    <div class="contact-page-section">
+        <div class="contact-form-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="contact-from-wrap">
+                            <div class="section-heading">
+                                <h5 class="dash-style">GET LOGIN</h5>
+                                <h2>LOGIN TO BOOK YOUR TRIP</h2>
+                            </div>
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="loginUsername">Username</label>
+                                    <input class="form-control" id="loginUsername" name="loginUsername" placeholder="Username"
+                                           required
+                                           title="Only lower case alphabetic characters and numbers are allowed"
+                                           type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label for="loginPassword">Password</label>
+                                    <input class="form-control" id="loginPassword" name="loginPassword" placeholder="Password"
+                                           required type="password">
+
+                                </div>
+                                <button class="btn btn-primary" type="submit">Login</button>
+                                <p class="mt-3">Don't have an account? <a href="{% url 'register' %}"
+                                                                          id="showRegisterForm">Create Account</a></p>
+                                <a href="{% url 'forgot_password' %}">Forgot Password</a>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- contact form html end -->
+</main>
+{% if error_message %}
+<script>
+    alert("{{error_message}}");
+</script>
+{% endif %}
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% include 'footer.html' %}

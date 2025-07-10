@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stripe Payment</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      padding: 20px;
+    }
+
+    .payment-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h2 {
+      color: #2d3748;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    #checkout-button {
+      background: #4f46e5;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #checkout-button:hover {
+      background: #4338ca;
+    }
+  </style>
+</head>
+<body>
+  <div class="payment-container">
+    <h2>Pay ₹{{ amount }}</h2>
+    <form action="{% url 'create_checkout_session' amount %}" method="POST">
+      {% csrf_token %}
+      <button type="submit" id="checkout-button">Pay Now</button>
+    </form>
+  </div>
+  <script src="https://js.stripe.com/v3/"></script>
+</body>
+</html>

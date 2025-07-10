@@ -1,0 +1,119 @@
+{% load static %}
+{% include 'header.html' %}
+{% block content %}
+
+<section class="inner-banner-wrap">
+    <div class="inner-baner-container"
+         style="background-image: url('http://127.0.0.1:8000/static/assets/images/slider-banner-1.jpg');">
+        <div class="container">
+            <div class="inner-banner-content">
+                <h1 class="inner-title">User Profile</h1>
+            </div>
+        </div>
+    </div>
+    <div class="inner-shape"></div>
+</section>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-heading">User Profile</h5>
+                </div>
+                <form enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    <div class="card-body text-center">
+                        <label for="profilePicture">
+                            {% if request.user.profile_picture.url %}
+                            <img alt="Profile Picture" class="img-fluid rounded-circle mb-3"
+                                 id="profileImage" src="{{request.user.profile_picture.url}}">
+                            {% else %}
+                            <img alt="Profile Picture"
+                                 class="img-fluid rounded-circle mb-3"
+                                 id="profileImage"
+                                 src="https://img.freepik.com/premium-psd/3d-cartoon-man-smiling-portrait-isolated-transparent-background-png-psd_888962-1569.jpg">
+                            {% endif %}
+
+                        </label>
+                        <input accept="image/*" id="profilePicture" name="image_up_lode" onchange="previewImage(event)"
+                               style="display: none;" type="file">
+                        <h5 class="card-title">
+                            <input class="form-control" name="first_name" placeholder="first name"
+                                   readonly type="text"
+                                   value="{{request.user.first_name}}">
+                        </h5>
+                        <p class="card-text">
+                            <input class="form-control" name="last_name" placeholder="last name" readonly
+                                   type="text"
+                                   value="{{request.user.last_name}}">
+                        </p>
+                        <p class="card-text">
+                            <input class="form-control" name="username" placeholder="username" readonly
+                                   type="text"
+                                   value="{{request.user.username}}">
+                        </p>
+<!--                        <p class="card-text">-->
+<!--                            <input class="form-control" id="dateInput" name="d_o_b" readonly-->
+<!--                                   required type="date" value='{{request.user.profile.date | date:"Y-m-d" }}'>-->
+<!--                        </p>-->
+                        <p class="card-text">
+                            <input class="form-control" name="email" placeholder="Email" readonly
+                                   type="email"
+                                   value="{{request.user.email}}">
+                        </p>
+                        <button class="btn btn-primary" id="editButton" onclick="editProfile()" type="button">Edit
+                            Profile
+                        </button>
+                        <button class="btn btn-success" id="saveButton" onclick="saveProfile()" style="display: none;"
+                                type="submit">Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    function editProfile() {
+      // Enable editing of input fields
+      document.querySelectorAll('.card-body input').forEach(function(input) {
+        input.removeAttribute('readonly');
+      });
+      // Toggle visibility of buttons
+      document.getElementById('editButton').style.display = 'none';
+      document.getElementById('saveButton').style.display = 'inline-block';
+    }
+
+    function saveProfile() {
+      // Save profile information
+      // For demonstration, let's just disable editing and toggle button visibility
+      document.querySelectorAll('.card-body input').forEach(function(input) {
+        input.setAttribute('readonly', true);
+      });
+      // Toggle visibility of buttons
+      document.getElementById('editButton').style.display = 'inline-block';
+      document.getElementById('saveButton').style.display = 'none';
+
+    }
+
+    function previewImage(event) {
+      const input = event.target;
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('profileImage').src = e.target.result;
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+</script>
+
+
+{% endblock %}
+{% include 'footer.html' %}

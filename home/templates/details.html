@@ -1,0 +1,323 @@
+{% extends 'base.html' %}
+{% load tour_custom_tags %}
+{% load static %}
+{% block content %}
+
+
+<main class="site-main" id="content">
+    <!-- Inner Banner html start-->
+    <section class="inner-banner-wrap">
+        <div class="inner-baner-container" style="background-image: url(assets/images/inner-banner.jpg);">
+            <div class="container">
+                <div class="inner-banner-content">
+                    <h1 class="inner-title">Package Detail</h1>
+                </div>
+            </div>
+        </div>
+        <div class="inner-shape"></div>
+    </section>
+    <!-- Inner Banner html end-->
+    <div class="single-tour-section">
+        <div class="container">
+            <div class="row">
+                {% for tour in tour %}
+                <div class="col-lg-8">
+                    <div class="single-tour-inner">
+                        <h2>EXPERIENCE THE NATURAL BEAUTY OF ISLAND</h2>
+                        <figure class="feature-image">
+                            <img alt="" src="{{tour.thumbnail.url}}">
+                            <div class="package-meta text-center">
+                                <ul>
+                                    <li>
+                                        <i class="far fa-clock"></i>
+                                        {{tour.day}}D / {{tour.night}}N
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-user-friends"></i>
+                                        People: {{tour.people}}
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-map-marked-alt"></i>
+                                        {{tour.title}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </figure>
+                        <div class="tab-container">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a aria-controls="overview" aria-selected="true" class="nav-link active" data-toggle="tab"
+                                       href="#overview" id="overview-tab" role="tab">TOUR DESCRIPTION</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a aria-controls="program" aria-selected="false" class="nav-link" data-toggle="tab" href="#program"
+                                       id="program-tab" role="tab">PROGRAM</a>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div aria-labelledby="overview-tab" class="tab-pane fade show active" id="overview"
+                                     role="tabpanel">
+                                    <div class="overview-content">
+                                        <p>Occaecat pariatur! Quaerat ligula, ab, consequuntur orci mus ultricies
+                                            praesent aute blandit beatae nisl aut, totam mauris rhoncus? Tellus netus
+                                            fringilla class auctor dui. Dolores excepteur, doloribus, blanditiis aliquip
+                                            nisl. Occaecat iusto? Provident sociis rerum. Amet, asperiores molestie
+                                            varius eos! Libero, fermentum fermentum totam! Sunt praesentium, totam.
+                                            Excepteur platea nisl. Convallis aliquam? Iaculis erat ipsa molestie, quod,
+                                            vestibulum reiciendis, maxime nostra, integer unde officiis quo integer unde
+                                            officiis quo.</p>
+                                        <p>Occaecat pariatur! Quaerat ligula, ab, consequuntur orci mus ultricies
+                                            praesent aute blandit beatae nisl aut, totam mauris rhoncus? Tellus netus
+                                            fringilla class auctor dui. Dolores excepteur, doloribus, blanditiis aliquip
+                                            nisl..</p>
+                                        <ul>
+                                            <li>- Travel cancellation insurance</li>
+                                            <li>- Breakfast and dinner included</li>
+                                            <li>- Health care included</li>
+                                            <li>- Transfer to the airport and return to the agency</li>
+                                            <li>- Lorem ipsum dolor sit amet, consectetur adipiscing</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div aria-labelledby="program-tab" class="tab-pane" id="program" role="tabpanel">
+                                    <div class="itinerary-content">
+                                        <h3>Program <span>( 4 days )</span></h3>
+                                        <p>Dolores maiores dicta dolore. Natoque placeat libero sunt sagittis debitis?
+                                            Egestas non non qui quos, semper aperiam lacinia eum nam! Pede beatae.
+                                            Soluta, convallis irure accusamus voluptatum ornare saepe cupidatat.</p>
+                                    </div>
+                                    <div class="itinerary-timeline-wrap">
+                                        <ul>
+                                            <li>
+                                                <div class="timeline-content">
+                                                    <div class="day-count">Day <span>1</span></div>
+                                                    <h4>Ancient Rome Visit</h4>
+                                                    <p>Nostra semper ultricies eu leo eros orci porta provident, fugit?
+                                                        Pariatur interdum assumenda, qui aliquip ipsa! Dictum natus
+                                                        potenti pretium.</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="timeline-content">
+                                                    <div class="day-count">Day <span>2</span></div>
+                                                    <h4>Classic Rome Sightseeing</h4>
+                                                    <p>Nostra semper ultricies eu leo eros orci porta provident, fugit?
+                                                        Pariatur interdum assumenda, qui aliquip ipsa! Dictum natus
+                                                        potenti pretium.</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="timeline-content">
+                                                    <div class="day-count">Day <span>3</span></div>
+                                                    <h4>Vatican City Visit</h4>
+                                                    <p>Nostra semper ultricies eu leo eros orci porta provident, fugit?
+                                                        Pariatur interdum assumenda, qui aliquip ipsa! Dictum natus
+                                                        potenti pretium.</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="timeline-content">
+                                                    <div class="day-count">Day <span>4</span></div>
+                                                    <h4>Italian Food Tour</h4>
+                                                    <p>Nostra semper ultricies eu leo eros orci porta provident, fugit?
+                                                        Pariatur interdum assumenda, qui aliquip ipsa! Dictum natus
+                                                        potenti pretium.</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div aria-labelledby="review-tab" class="tab-pane" id="review" role="tabpanel">
+                                    <div class="summary-review">
+                                        <div class="review-score">
+                                            <span>4.9</span>
+                                        </div>
+                                        <div class="review-score-content">
+                                            <h3>
+                                                Excellent
+                                                <span>( Based on 24 reviews )</span>
+                                            </h3>
+                                            <p>Tincidunt iaculis pede mus lobortis hendrerit eveniet impedit aenean
+                                                mauris qui, pharetra rem doloremque laboris euismod deserunt non,
+                                                cupiditate, vestibulum.</p>
+                                        </div>
+                                    </div>
+                                    <!-- review comment html -->
+                                    <div class="comment-area">
+                                        <h3 class="comment-title">3 Reviews</h3>
+                                        <div class="comment-area-inner">
+                                            <ol>
+                                                <li>
+                                                    <figure class="comment-thumb">
+                                                        <img alt="" src="assets/images/img20.jpg">
+                                                    </figure>
+                                                    <div class="comment-content">
+                                                        <div class="comment-header">
+                                                            <h5 class="author-name">Tom Sawyer</h5>
+                                                            <span class="post-on">Jana 10 2020</span>
+                                                            <div class="rating-wrap">
+                                                                <div class="rating-start" title="Rated 5 out of 5">
+                                                                    <span style="width: 90%;"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <p>Officia amet posuere voluptates, mollit montes eaque
+                                                            accusamus laboriosam quisque cupidatat dolor pariatur,
+                                                            pariatur auctor.</p>
+                                                        <a class="reply" href="#"><i class="fas fa-reply"></i>Reply</a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <ol>
+                                                        <li>
+                                                            <figure class="comment-thumb">
+                                                                <img alt="" src="assets/images/img21.jpg">
+                                                            </figure>
+                                                            <div class="comment-content">
+                                                                <div class="comment-header">
+                                                                    <h5 class="author-name">John Doe</h5>
+                                                                    <span class="post-on">Jana 10 2020</span>
+                                                                    <div class="rating-wrap">
+                                                                        <div class="rating-start"
+                                                                             title="Rated 5 out of 5">
+                                                                            <span style="width: 90%"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <p>Officia amet posuere voluptates, mollit montes eaque
+                                                                    accusamus laboriosam quisque cupidatat dolor
+                                                                    pariatur, pariatur auctor.</p>
+                                                                <a class="reply" href="#"><i class="fas fa-reply"></i>Reply</a>
+                                                            </div>
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                            </ol>
+                                            <ol>
+                                                <li>
+                                                    <figure class="comment-thumb">
+                                                        <img alt="" src="assets/images/img22.jpg">
+                                                    </figure>
+                                                    <div class="comment-content">
+                                                        <div class="comment-header">
+                                                            <h5 class="author-name">Jaan Smith</h5>
+                                                            <span class="post-on">Jana 10 2020</span>
+                                                            <div class="rating-wrap">
+                                                                <div class="rating-start" title="Rated 5 out of 5">
+                                                                    <span></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <p>Officia amet posuere voluptates, mollit montes eaque
+                                                            accusamus laboriosam quisque cupidatat dolor pariatur,
+                                                            pariatur auctor.</p>
+                                                        <a class="reply" href="#"><i class="fas fa-reply"></i>Reply</a>
+                                                    </div>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                        <div class="comment-form-wrap">
+                                            <h3 class="comment-title">Leave a Review</h3>
+                                            <form class="comment-form">
+                                                <div class="full-width rate-wrap">
+                                                    <label>Your rating</label>
+                                                    <div class="procduct-rate">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                    <input name="name" placeholder="Name" type="text">
+                                                </p>
+                                                <p>
+                                                    <input name="name" placeholder="Last name" type="text">
+                                                </p>
+                                                <p>
+                                                    <input name="email" placeholder="Email" type="email">
+                                                </p>
+                                                <p>
+                                                    <input name="subject" placeholder="Subject" type="text">
+                                                </p>
+                                                <p>
+                                                    <textarea placeholder="Your review" rows="6"></textarea>
+                                                </p>
+                                                <p>
+                                                    <input name="submit" type="submit" value="Submit">
+                                                </p>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div aria-labelledby="map-tab" class="tab-pane" id="map" role="tabpanel">
+                                    <div class="map-area">
+                                        <iframe allowfullscreen=""
+                                                height="450" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60998820.06503915!2d95.3386452160086!3d-21.069765827214972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2b2bfd076787c5df%3A0x538267a1955b1352!2sAustralia!5e0!3m2!1sen!2snp!4v1579777829477!5m2!1sen!2snp"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-tour-gallery">
+                            <h3>GALLERY / PHOTOS</h3>
+                            <div class="single-tour-slider">
+                                <div class="single-tour-item">
+                                    <figure class="feature-image">
+                                        <img alt="" src="assets/images/img28.jpg">
+                                    </figure>
+                                </div>
+                                <div class="single-tour-item">
+                                    <figure class="feature-image">
+                                        <img alt="" src="assets/images/img29.jpg">
+                                    </figure>
+                                </div>
+                                <div class="single-tour-item">
+                                    <figure class="feature-image">
+                                        <img alt="" src="assets/images/img32.jpg">
+                                    </figure>
+                                </div>
+                                <div class="single-tour-item">
+                                    <figure class="feature-image">
+                                        <img alt="" src="assets/images/img33.jpg">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="sidebar">
+                        <div class="package-price">
+                            <h5 class="price">
+                                <span>{% cal_sellprice tour.price tour.discount as value %}{{value|rupee}}</span> / per
+                                person
+                            </h5>
+                        </div>
+
+                        <div class="widget-bg information-content text-center">
+                            <h5>TRAVEL TIPS</h5>
+                            <h3>NEED TRAVEL RELATED TIPS & INFORMATION</h3>
+                            <p>Mollit voluptatem perspiciatis convallis elementum corporis quo veritatis aliquid
+                                blandit, blandit torquent, odit placeat. </p>
+                            <a class="button-primary" href="#">GET A QUOTE</a>
+                        </div>
+                        <div class="travel-package-content text-center"
+                             style="background-image: url(assets/images/img11.jpg);">
+                            <h5>MORE PACKAGES</h5>
+                            <h3>OTHER TRAVEL PACKAGES</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus.</p>
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="far fa-arrow-alt-circle-right"></i>Comming Soon</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+{% endblock %}
